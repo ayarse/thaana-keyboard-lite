@@ -1,5 +1,11 @@
 # thaana-keyboard-lite
 
+## 0.1.3
+
+### Patch Changes
+
+- de1df83: Refactor character map to parallel strings and update docs
+
 ## 0.1.2
 
 ### Patch Changes
