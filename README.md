@@ -1,6 +1,6 @@
 # thaana-keyboard-lite ✨
 
-A tiny (~40 lines, 1.1 KB minified, zero dependencies) Thaana keyboard library for the web.
+A tiny (~40 lines, ~1 KB minified, zero dependencies) Thaana keyboard library for the web.
 
 ## Why another Thaana keyboard?
 
@@ -13,6 +13,8 @@ There are several existing Thaana keyboard libraries for JavaScript. All of them
 **[JTK](https://github.com/jawish/jtk)** (jawish) — The most feature-rich of the three, with three keyboard layouts and per-element layout switching. Uses deprecated event APIs. No module system, no npm package, no IME support.
 
 All three are awkward to use in modern projects. They share a common approach: intercept a key event, then manually replace the field's `.value` to swap in the Thaana character. But replacing `.value` resets the cursor to the end, so they all need manual bookkeeping — save cursor position, splice the string, restore cursor, handle selections. This also breaks the browser's native undo/redo stack, since the browser sees a programmatic value change rather than a user edit. None of them offer ES module exports, element ref support, or cleanup functions — things you need for clean integration with modern frameworks.
+
+That said, huge thanks to [aharen](https://github.com/aharen), [ajaaibu](https://github.com/ajaaibu), and [jawish](https://github.com/jawish) for their pioneering work. They solved a real problem for the Dhivehi developer community and this library builds directly on the foundation they laid.
 
 ### What this library does differently
 
