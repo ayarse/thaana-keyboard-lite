@@ -1,0 +1,35 @@
+{
+  "name": "thaana-keyboard-lite",
+  "version": "0.1.0",
+  "description": "A tiny (~40 lines, zero dependencies) Thaana keyboard library for the web",
+  "type": "module",
+  "main": "thaana-keyboard-lite.js",
+  "module": "thaana-keyboard-lite.js",
+  "exports": {
+    ".": "./thaana-keyboard-lite.js"
+  },
+  "files": [
+    "thaana-keyboard-lite.js"
+  ],
+  "keywords": [
+    "thaana",
+    "dhivehi",
+    "maldives",
+    "keyboard",
+    "rtl",
+    "input"
+  ],
+  "scripts": {
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AYIDouble/thaana-keyboard-lite"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.8"
+  }
+}
