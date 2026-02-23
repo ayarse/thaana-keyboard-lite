@@ -1,5 +1,7 @@
 # thaana-keyboard-lite ✨
 
+> When working with modern frameworks and existing Thaana keyboard libraries, things never quite fit together cleanly, so I wanted to try something different. It's stable as far as I can tell and I've tested it with React and Laravel Filament where the DX was much better, but it is an experiment so feedback and integration testing with frameworks like Vue, Svelte, etc. are welcome! [Open an issue](https://github.com/ayarse/thaana-keyboard-lite/issues) if you run into anything.
+
 A tiny (~40 lines, ~1 KB minified, zero dependencies) Thaana keyboard library for the web.
 
 ## Why another Thaana keyboard?
