@@ -1,6 +1,6 @@
 {
   "name": "thaana-keyboard-lite",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A tiny (~40 lines, zero dependencies) Thaana keyboard library for the web",
   "type": "module",
   "main": "thaana-keyboard-lite.js",
