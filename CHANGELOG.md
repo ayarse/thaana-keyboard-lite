@@ -1,5 +1,11 @@
 # thaana-keyboard-lite
 
+## 0.1.4
+
+### Patch Changes
+
+- e8d5fa5: fix: agent fumble
+
 ## 0.1.3
 
 ### Patch Changes
