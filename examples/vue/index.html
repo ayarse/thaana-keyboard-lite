@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue — thaana-keyboard-lite</title>
+    <link rel="stylesheet" href="../shared.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://esm.sh/vue@3.5.13/dist/vue.esm-browser.prod.js",
+          "thaana-keyboard-lite": "https://esm.sh/thaana-keyboard-lite"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <a class="back" href="../">← All demos</a>
+      <h1>Vue 3</h1>
+      <p class="lead">
+        Bind a template ref, then attach in <code>onMounted</code> and clean up
+        in <code>onBeforeUnmount</code>. <code>thaanaKeyboard()</code> returns
+        the cleanup function.
+      </p>
+
+      <div id="app"></div>
+
+      <h2>Source</h2>
+      <pre class="language-html"><code class="language-html">&lt;script setup&gt;
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import { thaanaKeyboard } from "thaana-keyboard-lite";
+
+const text = ref("");
+const inputEl = ref(null);
+let cleanup;
+
+onMounted(() =&gt; {
+  cleanup = thaanaKeyboard({ element: inputEl.value });
+});
+onBeforeUnmount(() =&gt; cleanup?.());
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;input ref="inputEl" v-model="text" dir="rtl" /&gt;
+&lt;/template&gt;</code></pre>
+    </main>
+
+    <script type="module">
+      import { createApp, ref, onMounted, onBeforeUnmount } from "vue";
+      import { thaanaKeyboard } from "thaana-keyboard-lite";
+
+      createApp({
+        setup() {
+          const name = ref("");
+          const message = ref("");
+          const nameEl = ref(null);
+          const messageEl = ref(null);
+          let cleanupName;
+          let cleanupMessage;
+
+          onMounted(() => {
+            cleanupName = thaanaKeyboard({ element: nameEl.value });
+            cleanupMessage = thaanaKeyboard({ element: messageEl.value });
+          });
+
+          onBeforeUnmount(() => {
+            cleanupName?.();
+            cleanupMessage?.();
+          });
+
+          return { name, message, nameEl, messageEl };
+        },
+        template: `
+          <div>
+            <div class="field">
+              <label for="name">Name</label>
+              <input
+                id="name"
+                ref="nameEl"
+                v-model="name"
+                dir="rtl"
+                placeholder="ނަން"
+                autocomplete="off"
+              />
+              <div class="preview">
+                <strong>Value</strong>
+                {{ name || '—' }}
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                ref="messageEl"
+                v-model="message"
+                dir="rtl"
+                placeholder="މެސެޖު..."
+              ></textarea>
+              <div class="preview">
+                <strong>Value</strong>
+                {{ message || '—' }}
+              </div>
+            </div>
+          </div>
+        `,
+      }).mount("#app");
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  </body>
+</html>

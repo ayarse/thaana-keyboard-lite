@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>thaana-keyboard-lite — examples</title>
+    <meta
+      name="description"
+      content="Live examples of thaana-keyboard-lite: a tiny Thaana (Dhivehi) keyboard library for the web."
+    />
+    <link rel="stylesheet" href="./shared.css" />
+    <style>
+      .container { max-width: 720px; padding-top: 4rem; padding-bottom: 4rem; }
+      h1 { font-size: 2.25rem; }
+      .lead a { color: var(--accent); text-decoration: none; }
+      .lead a:hover { text-decoration: underline; }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      @media (min-width: 640px) {
+        .grid { grid-template-columns: repeat(3, 1fr); }
+      }
+      .card {
+        display: block;
+        padding: 1.25rem;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 0.15s ease, transform 0.15s ease;
+      }
+      .card:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+      }
+      .card h2 {
+        font-size: 1.1rem;
+        margin: 0 0 0.25rem;
+        text-transform: none;
+        letter-spacing: 0;
+        color: inherit;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      footer {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 0.875rem;
+      }
+      footer a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      code {
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 0.875em;
+        background: var(--border);
+        padding: 0.1em 0.3em;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>thaana-keyboard-lite ✨</h1>
+      <p class="lead">
+        A tiny Thaana (Dhivehi) keyboard library for the web. Pick a demo to try
+        it out — type Latin keys, get Thaana characters.
+        <a href="https://github.com/ayarse/thaana-keyboard-lite">View on GitHub</a>.
+      </p>
+
+      <div class="grid">
+        <a class="card" href="./vanilla/">
+          <h2>Vanilla JS</h2>
+          <p>Plain HTML and a class selector. No framework.</p>
+        </a>
+        <a class="card" href="./react/">
+          <h2>React</h2>
+          <p><code>useRef</code> + <code>useEffect</code> with cleanup.</p>
+        </a>
+        <a class="card" href="./vue/">
+          <h2>Vue 3</h2>
+          <p>Template ref + <code>onMounted</code> with cleanup.</p>
+        </a>
+      </div>
+
+      <footer>
+        Install: <code>npm install thaana-keyboard-lite</code> ·
+        <a href="https://github.com/ayarse/thaana-keyboard-lite">Source</a>
+      </footer>
+    </main>
+  </body>
+</html>

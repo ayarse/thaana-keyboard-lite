@@ -20,6 +20,7 @@
     "input"
   ],
   "scripts": {
+    "build:examples": "bun scripts/build-examples.ts",
     "changeset": "changeset",
     "version": "changeset version",
     "release": "changeset publish"

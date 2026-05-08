@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanilla JS — thaana-keyboard-lite</title>
+    <link rel="stylesheet" href="../shared.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <a class="back" href="../">← All demos</a>
+      <h1>Vanilla JS</h1>
+      <p class="lead">
+        Add the <code>thaana-keyboard</code> class to any input or textarea, then
+        call <code>thaanaKeyboard()</code>.
+      </p>
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          class="thaana-keyboard"
+          dir="rtl"
+          placeholder="ނަން"
+          autocomplete="off"
+        />
+        <p class="hint">Type Latin letters — they get mapped to Thaana.</p>
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          class="thaana-keyboard"
+          dir="rtl"
+          placeholder="މެސެޖު..."
+        ></textarea>
+      </div>
+
+      <h2>Source</h2>
+      <pre class="language-html"><code class="language-html">&lt;input class="thaana-keyboard" dir="rtl" /&gt;
+&lt;textarea class="thaana-keyboard" dir="rtl"&gt;&lt;/textarea&gt;
+
+&lt;script type="module"&gt;
+  import { thaanaKeyboard } from "https://esm.sh/thaana-keyboard-lite";
+  thaanaKeyboard();
+&lt;/script&gt;</code></pre>
+    </main>
+
+    <script type="module">
+      import { thaanaKeyboard } from "https://esm.sh/thaana-keyboard-lite";
+      thaanaKeyboard();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  </body>
+</html>

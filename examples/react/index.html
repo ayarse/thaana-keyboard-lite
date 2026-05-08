@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React — thaana-keyboard-lite</title>
+    <link rel="stylesheet" href="../shared.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@19.0.0",
+          "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+          "react/jsx-runtime": "https://esm.sh/react@19.0.0/jsx-runtime",
+          "thaana-keyboard-lite": "https://esm.sh/thaana-keyboard-lite"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <a class="back" href="../">← All demos</a>
+      <h1>React</h1>
+      <p class="lead">
+        Pass an element ref to <code>thaanaKeyboard()</code>. It returns a
+        cleanup function — return it from <code>useEffect</code> and you're done.
+      </p>
+
+      <div id="root"></div>
+
+      <h2>Source</h2>
+      <pre class="language-jsx"><code class="language-jsx">import { useEffect, useRef } from "react";
+import { thaanaKeyboard } from "thaana-keyboard-lite";
+
+function ThaanaInput(props) {
+  const ref = useRef(null);
+
+  useEffect(() =&gt; {
+    return thaanaKeyboard({ element: ref.current });
+  }, []);
+
+  return &lt;input ref={ref} dir="rtl" {...props} /&gt;;
+}</code></pre>
+    </main>
+    <script type="module" src="./main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  </body>
+</html>

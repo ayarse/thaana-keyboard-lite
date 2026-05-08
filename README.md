@@ -4,6 +4,8 @@
 
 A tiny (~40 lines, ~1 KB minified, zero dependencies) Thaana keyboard library for the web.
 
+**[Live demos →](https://ayarse.github.io/thaana-keyboard-lite/)** — Vanilla JS, React, and Vue examples.
+
 ## Why another Thaana keyboard?
 
 There are several existing Thaana keyboard libraries for JavaScript. All of them were written in a different era of the web and carry baggage that makes them awkward to use in modern projects.
@@ -86,6 +88,21 @@ return <input ref={ref} dir="rtl" />;
 ```
 
 `thaanaKeyboard()` returns a function that removes all event listeners, so it works as a `useEffect` cleanup out of the box. None of the existing Thaana keyboard libraries support this.
+
+## Examples
+
+Working examples for each integration live in [`examples/`](./examples):
+
+- [`examples/vanilla`](./examples/vanilla) — plain HTML and a class selector
+- [`examples/react`](./examples/react) — `useRef` + `useEffect` cleanup
+- [`examples/vue`](./examples/vue) — template ref + `onMounted` / `onBeforeUnmount`
+
+To preview locally, build them and serve the output:
+
+```bash
+bun run build:examples
+bunx serve dist/examples
+```
 
 ## Why plain JS with JSDoc instead of TypeScript?
 
