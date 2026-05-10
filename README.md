@@ -1,14 +1,12 @@
 # thaana-keyboard-lite ✨
 
-> When working with modern frameworks and existing Thaana keyboard libraries, things never quite fit together cleanly, so I wanted to try something different. It's stable as far as I can tell and I've tested it with React and Laravel Filament where the DX was much better, but it is an experiment so feedback and integration testing with frameworks like Vue, Svelte, etc. are welcome! [Open an issue](https://github.com/ayarse/thaana-keyboard-lite/issues) if you run into anything.
-
-A tiny (~40 lines, ~1 KB minified, zero dependencies) Thaana keyboard library for the web.
+A tiny (~80 lines, ~1 KB minified, zero dependencies) Thaana keyboard library for the modern web.
 
 **[Live demos →](https://ayarse.github.io/thaana-keyboard-lite/)** — Vanilla JS, React, and Vue examples.
 
 ## Why another Thaana keyboard?
 
-There are several existing Thaana keyboard libraries for JavaScript. All of them were written in a different era of the web and carry baggage that makes them awkward to use in modern projects.
+There are several existing Thaana keyboard libraries for JavaScript. All of them were written in a different era of the web and carry baggage that makes them awkward to use in modern projects, so I wanted to make something that was easier to work with modern stacks and frontend frameworks.
 
 **[thaana-keyboard](https://github.com/aharen/thaana-keyboard)** (aharen) — No dependencies, TypeScript source. Uses a two-phase approach (`beforeinput` to capture + `input` to replace) with manual string splicing to swap characters. This breaks the browser's native undo/redo stack and requires careful cursor tracking. No ES module support, no cleanup API.
 
@@ -20,17 +18,22 @@ All three are awkward to use in modern projects. They share a common approach: i
 
 That said, huge thanks to [aharen](https://github.com/aharen), [ajaaibu](https://github.com/ajaaibu), and [jawish](https://github.com/jawish) for their pioneering work. They solved a real problem for the Dhivehi developer community and this library builds directly on the foundation they laid.
 
-### What this library does differently
+### Design
 
-`thaana-keyboard-lite` ✨ takes a simpler approach. It listens for `beforeinput`, looks up the character in a keymap, and if there's a match, prevents the default and inserts the Thaana character with `execCommand('insertText')`. That's it. The browser handles cursor positioning, text selection, undo/redo, and scroll — no manual bookkeeping.
+`thaana-keyboard-lite` ✨ leans on the modern web platform instead of working around it. Two small listeners do the work:
+
+- **`beforeinput`** intercepts ordinary Latin keypresses and inserts the Thaana character via `execCommand('insertText')`. The browser keeps owning the cursor, selection, scroll, and the native undo/redo stack — no manual bookkeeping.
+- **`input`** runs a stateless repair sweep — scan the value, swap any mapped Latin character for its Thaana equivalent, restore the caret. This handles the cases `beforeinput` can't cleanly cancel: Android IME committing the composition buffer on space, paste, and drag-and-drop.
+
+The field's own value is the source of truth. There's no shadow state to keep in sync, no class instance to manage, and no global listeners attached to `document`.
 
 This means:
 
-- **~40 lines of code** instead of hundreds
-- **Zero dependencies** — no jQuery, no framework
-- **Composition/IME support** — works with mobile keyboards and input methods
-- **Undo/redo works** — because `execCommand` participates in the browser's undo stack
-- **Selection replacement works** — selecting text and typing replaces it correctly, handled by the browser
+- **Tiny** — ~80 lines of source, ~1 KB minified, zero dependencies
+- **Composition / IME support** — works with mobile keyboards
+- **Undo/redo preserved** — `execCommand` participates in the browser's native history
+- **Selection replacement, RTL caret, scroll** — handled by the browser, not us
+- **Framework-friendly** — ESM, element refs, returns a cleanup function for `useEffect`
 
 ## Install
 
