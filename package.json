@@ -33,6 +33,7 @@
     "url": "https://github.com/ayarse/thaana-keyboard-lite"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.4.15",
     "@changesets/cli": "^2.29.8"
   }
 }
