@@ -20,6 +20,8 @@
     "input"
   ],
   "scripts": {
+    "dev": "bun scripts/dev.ts",
+    "dev:tunnel": "bun scripts/dev.ts --tunnel",
     "build:examples": "bun scripts/build-examples.ts",
     "changeset": "changeset",
     "version": "changeset version",
