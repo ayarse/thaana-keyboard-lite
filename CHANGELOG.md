@@ -1,5 +1,11 @@
 # thaana-keyboard-lite
 
+## 0.1.5
+
+### Patch Changes
+
+- 509db3c: fix: handle Android IME composition
+
 ## 0.1.4
 
 ### Patch Changes
